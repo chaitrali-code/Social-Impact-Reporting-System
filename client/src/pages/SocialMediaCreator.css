@@ -1,0 +1,183 @@
+.social-page {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.social-page-header {
+  margin-bottom: 2rem;
+  animation: fadeInUp 0.4s ease-out;
+}
+
+/* ─── Controls ───────────────────────────────────── */
+.social-controls {
+  background: var(--bg-card);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  animation: fadeInUp 0.5s ease-out;
+}
+
+.social-select-group {
+  margin-bottom: 1.25rem;
+}
+
+.social-select-group label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.4rem;
+}
+
+.social-select-group select {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-family: var(--font-body);
+  outline: none;
+  appearance: none;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.social-select-group select:focus {
+  border-color: var(--accent-purple);
+}
+
+.social-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.btn-regenerate {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.8rem 1.25rem;
+  background: transparent;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-regenerate:hover {
+  border-color: var(--accent-purple);
+  color: var(--text-primary);
+}
+
+/* ─── Social Cards ───────────────────────────────── */
+.social-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  animation: fadeInUp 0.5s ease-out;
+}
+
+.social-card {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  animation: slideUp 0.5s ease-out both;
+}
+
+.social-card:nth-child(2) { animation-delay: 0.1s; }
+.social-card:nth-child(3) { animation-delay: 0.2s; }
+
+.social-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1rem 1.25rem;
+}
+
+.social-platform-icon {
+  font-size: 1.25rem;
+}
+
+.social-platform-name {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.9rem;
+  flex: 1;
+}
+
+.char-count {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.social-card-content {
+  padding: 0 1.25rem 1.25rem;
+}
+
+.social-text {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+/* ─── Instagram ──────────────────────────────────── */
+.instagram-card {
+  background: linear-gradient(135deg, rgba(131, 58, 180, 0.1), rgba(253, 29, 29, 0.08), rgba(252, 176, 69, 0.06));
+  border: 1px solid rgba(131, 58, 180, 0.2);
+}
+
+.instagram-card .social-platform-icon {
+  color: #E4405F;
+}
+
+.instagram-card .social-platform-name {
+  color: #E4405F;
+}
+
+/* ─── Twitter/X ──────────────────────────────────── */
+.twitter-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.twitter-card .social-platform-icon {
+  color: var(--text-primary);
+}
+
+.twitter-card .social-platform-name {
+  color: var(--text-primary);
+}
+
+/* ─── LinkedIn ───────────────────────────────────── */
+.linkedin-card {
+  background: rgba(10, 102, 194, 0.06);
+  border: 1px solid rgba(10, 102, 194, 0.15);
+}
+
+.linkedin-card .social-platform-icon {
+  color: #0A66C2;
+}
+
+.linkedin-card .social-platform-name {
+  color: #0A66C2;
+}
+
+/* ─── Responsive ─────────────────────────────────── */
+@media (max-width: 600px) {
+  .social-card-header {
+    flex-wrap: wrap;
+  }
+}

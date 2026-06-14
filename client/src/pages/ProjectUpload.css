@@ -1,0 +1,425 @@
+.upload-page {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.upload-header {
+  margin-bottom: 2rem;
+  animation: fadeInUp 0.4s ease-out;
+}
+
+/* ─── Stepper ────────────────────────────────────── */
+.stepper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 2.5rem;
+  animation: fadeInUp 0.5s ease-out;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.step-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid var(--glass-border);
+  transition: all 0.3s;
+  cursor: default;
+  flex-shrink: 0;
+}
+
+.step.active .step-circle {
+  background: var(--gradient-primary);
+  border-color: var(--accent-purple);
+  color: white;
+  box-shadow: 0 0 15px rgba(124, 58, 237, 0.4);
+}
+
+.step.completed .step-circle {
+  background: rgba(20, 184, 166, 0.2);
+  border-color: var(--accent-teal);
+  color: var(--accent-teal);
+  cursor: pointer;
+}
+
+.step-label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.step.active .step-label {
+  color: var(--text-primary);
+}
+
+.step.completed .step-label {
+  color: var(--accent-teal);
+}
+
+.step-line {
+  width: 40px;
+  height: 2px;
+  background: var(--glass-border);
+  margin: 0 0.5rem;
+}
+
+.step.completed .step-line {
+  background: var(--accent-teal);
+}
+
+/* ─── Step Content ───────────────────────────────── */
+.step-content {
+  animation: fadeInUp 0.4s ease-out;
+}
+
+.form-step {
+  animation: fadeInUp 0.3s ease-out;
+}
+
+.step-title {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.step-description {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ─── Form ───────────────────────────────────────── */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-field.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-field label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.form-field input,
+.form-field textarea,
+.form-field select {
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-family: var(--font-body);
+  outline: none;
+  transition: all 0.2s;
+  resize: vertical;
+}
+
+.form-field input:focus,
+.form-field textarea:focus,
+.form-field select:focus {
+  border-color: var(--accent-purple);
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.12);
+}
+
+.form-field select {
+  appearance: none;
+  cursor: pointer;
+}
+
+/* ─── Dropzone ───────────────────────────────────── */
+.dropzone {
+  border: 2px dashed var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: 3rem 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 1rem;
+}
+
+.dropzone:hover,
+.dropzone.drag-active {
+  border-color: var(--accent-purple);
+  background: rgba(124, 58, 237, 0.05);
+}
+
+.dropzone-icon {
+  font-size: 3rem;
+  color: var(--accent-purple-light);
+  margin-bottom: 0.75rem;
+}
+
+.dropzone-text {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 0.35rem;
+}
+
+.dropzone-hint {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+/* ─── Photo Previews ─────────────────────────────── */
+.photo-previews {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.photo-preview {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  aspect-ratio: 1;
+}
+
+.photo-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-remove {
+  position: absolute;
+  top: 0.35rem;
+  right: 0.35rem;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.7);
+  border: none;
+  color: white;
+  font-size: 0.8rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.photo-remove:hover {
+  background: #ef4444;
+}
+
+/* ─── SDG Grid ───────────────────────────────────── */
+.sdg-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.75rem;
+}
+
+.sdg-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: left;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  font-family: var(--font-body);
+}
+
+.sdg-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--sdg-color);
+}
+
+.sdg-card.selected {
+  background: color-mix(in srgb, var(--sdg-color) 15%, transparent);
+  border-color: var(--sdg-color);
+  color: var(--text-primary);
+}
+
+.sdg-card-number {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.75rem;
+  color: white;
+  flex-shrink: 0;
+}
+
+.sdg-card-name {
+  flex: 1;
+  line-height: 1.2;
+}
+
+.sdg-card-check {
+  color: var(--sdg-color);
+  font-size: 1.1rem;
+}
+
+/* ─── Review ─────────────────────────────────────── */
+.review-card {
+  background: var(--bg-card);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+}
+
+.review-section {
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.review-section:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.review-section h4 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+}
+
+.review-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.review-grid span {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.review-description {
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.review-description span {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.review-description p {
+  margin-top: 0.35rem;
+  line-height: 1.5;
+}
+
+.review-sdgs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.review-sdg-badge {
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: white;
+}
+
+.text-muted {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+/* ─── Step Nav ───────────────────────────────────── */
+.step-nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--glass-border);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.7rem 1.25rem;
+  background: transparent;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-outline:hover {
+  border-color: var(--accent-purple);
+  color: var(--text-primary);
+  background: rgba(124, 58, 237, 0.08);
+}
+
+.btn-submit {
+  min-width: 160px;
+  justify-content: center;
+}
+
+/* ─── Responsive ─────────────────────────────────── */
+@media (max-width: 700px) {
+  .stepper {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .step-label {
+    display: none;
+  }
+  .step-line {
+    width: 20px;
+  }
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+  .sdg-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+  .review-grid {
+    grid-template-columns: 1fr;
+  }
+}

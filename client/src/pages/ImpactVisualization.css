@@ -1,0 +1,79 @@
+.impact-page {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.impact-page-header {
+  margin-bottom: 2rem;
+  animation: fadeInUp 0.4s ease-out;
+}
+
+/* ─── Summary Stats ──────────────────────────────── */
+.impact-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+  animation: fadeInUp 0.5s ease-out;
+}
+
+.summary-item {
+  background: var(--bg-card);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.summary-item:hover {
+  transform: translateY(-3px);
+  border-color: var(--border-color);
+  box-shadow: var(--shadow-glow);
+}
+
+.summary-icon {
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.summary-value {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.summary-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.25rem;
+}
+
+/* ─── Charts Grid ────────────────────────────────── */
+.impact-charts-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+/* Reuses .chart-card, .chart-card-header, .chart-badge, .chart-container from Dashboard */
+
+/* ─── Responsive ─────────────────────────────────── */
+@media (max-width: 900px) {
+  .impact-charts-grid {
+    grid-template-columns: 1fr;
+  }
+  .impact-summary {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 500px) {
+  .impact-summary {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,41 @@
+.sdg-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--sdg-color);
+  border-radius: 20px;
+  font-weight: 700;
+  color: white;
+  cursor: default;
+  transition: transform 0.2s, box-shadow 0.2s;
+  white-space: nowrap;
+}
+
+.sdg-badge:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--sdg-color) 50%, transparent);
+}
+
+.sdg-badge-sm {
+  padding: 0.15rem 0.5rem;
+  font-size: 0.65rem;
+}
+
+.sdg-badge-md {
+  padding: 0.25rem 0.65rem;
+  font-size: 0.8rem;
+}
+
+.sdg-badge-lg {
+  padding: 0.35rem 0.85rem;
+  font-size: 0.95rem;
+}
+
+.sdg-badge-number {
+  font-family: var(--font-heading);
+}
+
+.sdg-badge-name {
+  font-weight: 500;
+  font-size: 0.85em;
+}
