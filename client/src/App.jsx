@@ -14,7 +14,7 @@ import ReportGenerator from './pages/ReportGenerator';
 import SocialMediaCreator from './pages/SocialMediaCreator';
 import SDGMapping from './pages/SDGMapping';
 import ImpactVisualization from './pages/ImpactVisualization';
-
+import SmartCalendar from './pages/SmartCalender';
 import './App.css';
 
 function App() {
@@ -38,6 +38,7 @@ function App() {
               <Route path="/social-media" element={<SocialMediaCreator />} />
               <Route path="/sdg-mapping" element={<SDGMapping />} />
               <Route path="/impact" element={<ImpactVisualization />} />
+              <Route path="/smart-calendar" element={<SmartCalendar />} />
             </Route>
           </Route>
 

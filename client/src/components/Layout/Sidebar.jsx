@@ -1,7 +1,14 @@
 import { NavLink } from 'react-router-dom';
 import {
-  MdDashboard, MdFolder, MdCloudUpload, MdAutoAwesome,
-  MdShare, MdPublic, MdInsights, MdChevronLeft
+  MdDashboard,
+  MdFolder,
+  MdCloudUpload,
+  MdAutoAwesome,
+  MdShare,
+  MdPublic,
+  MdInsights,
+  MdChevronLeft,
+  MdCalendarMonth
 } from 'react-icons/md';
 import './Sidebar.css';
 
@@ -13,6 +20,8 @@ const menuItems = [
   { to: '/social-media', label: 'Social Media', icon: MdShare },
   { to: '/sdg-mapping', label: 'SDG Mapping', icon: MdPublic },
   { to: '/impact', label: 'Impact', icon: MdInsights },
+  { to: '/smart-calendar', label: 'Smart Calendar', icon: MdCalendarMonth },
+
 ];
 
 const Sidebar = ({ collapsed, onToggle }) => {

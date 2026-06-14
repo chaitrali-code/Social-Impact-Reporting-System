@@ -13,6 +13,8 @@ const authRoutes = require('./routes/auth');
 const projectRoutes = require('./routes/projects');
 const aiRoutes = require('./routes/ai');
 const analyticsRoutes = require('./routes/analytics');
+const calendarRoutes = require('./routes/calendar');
+const posterRoutes = require('./routes/poster');
 
 // Initialize Express app
 const app = express();
@@ -36,6 +38,8 @@ app.use('/api/auth', authRoutes);
 app.use('/api/projects', projectRoutes);
 app.use('/api/ai', aiRoutes);
 app.use('/api/analytics', analyticsRoutes);
+app.use('/api/calendar', calendarRoutes);
+app.use('/api/poster', posterRoutes);
 
 // Health check endpoint
 app.get('/', (req, res) => {
