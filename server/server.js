@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require('path');
 const fs = require('fs');
-
+require('dotenv').config();
+console.log("JWT_SECRET =", process.env.JWT_SECRET);
 // Load environment variables
 require('dotenv').config();
 

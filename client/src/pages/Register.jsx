@@ -14,7 +14,7 @@ const Register = () => {
     password: '',
     confirmPassword: '',
     club: '',
-    role: 'user',
+    role: 'member',
   });
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -167,7 +167,7 @@ const Register = () => {
                   value={formData.role}
                   onChange={handleChange}
                 >
-                  <option value="user">Member</option>
+                  <option value="member">Member</option>
                   <option value="club_admin">Club Admin</option>
                   <option value="admin">Administrator</option>
                 </select>

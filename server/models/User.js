@@ -20,11 +20,11 @@ const userSchema = new mongoose.Schema({
     required: [true, 'Password is required'],
     minlength: [6, 'Password must be at least 6 characters']
   },
-  role: {
-    type: String,
-    enum: ['admin', 'member'],
-    default: 'member'
-  },
+role: {
+  type: String,
+  enum: ['member', 'club_admin', 'admin'],
+  default: 'member'
+},
   club: {
     type: String,
     required: [true, 'Club name is required'],
@@ -37,19 +37,13 @@ const userSchema = new mongoose.Schema({
 });
 
 // Pre-save hook to hash password
-userSchema.pre('save', async function (next) {
-  // Only hash the password if it has been modified (or is new)
+userSchema.pre('save', async function () {
   if (!this.isModified('password')) {
-    return next();
+    return;
   }
 
-  try {
-    const salt = await bcrypt.genSalt(10);
-    this.password = await bcrypt.hash(this.password, salt);
-    next();
-  } catch (err) {
-    next(err);
-  }
+  const salt = await bcrypt.genSalt(10);
+  this.password = await bcrypt.hash(this.password, salt);
 });
 
 // Instance method to compare password

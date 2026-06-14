@@ -24,7 +24,7 @@ ChartJS.register(
 const Dashboard = () => {
   const { user } = useAuth();
   const [stats, setStats] = useState(null);
-  const [sdgDist, setSdgDist] = useState(null);
+  const [sdgDist, setSdgDist] = useState([]);
   const [timeline, setTimeline] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -37,8 +37,17 @@ const Dashboard = () => {
           getTimeline(),
         ]);
         if (statsRes.status === 'fulfilled') setStats(statsRes.value.data);
-        if (sdgRes.status === 'fulfilled') setSdgDist(sdgRes.value.data);
-        if (timeRes.status === 'fulfilled') setTimeline(timeRes.value.data);
+          if (sdgRes.status === 'fulfilled') {
+            const responseData = sdgRes.value.data;
+          
+            if (Array.isArray(responseData)) {
+              setSdgDist(responseData);
+            } else if (Array.isArray(responseData?.data)) {
+              setSdgDist(responseData.data);
+            } else {
+              setSdgDist([]);
+            }
+          }        if (timeRes.status === 'fulfilled') setTimeline(timeRes.value.data);
       } catch {
         // silently handle
       } finally {
@@ -117,19 +126,24 @@ const Dashboard = () => {
   };
 
   // Doughnut — SDG Distribution
-  const sdgDistData = sdgDist || sdgGoals.slice(0, 8).map((s, i) => ({ sdg: s.number, count: Math.floor(Math.random() * 10) + 1 }));
-  const doughnutData = {
-    labels: sdgDistData.map(d => `SDG ${d.sdg}`),
-    datasets: [{
-      data: sdgDistData.map(d => d.count),
-      backgroundColor: sdgDistData.map(d => {
-        const sdg = sdgGoals.find(s => s.number === d.sdg);
-        return sdg?.color || '#666';
-      }),
-      borderWidth: 0,
-      hoverOffset: 8,
-    }],
-  };
+      const sdgDistData =
+        Array.isArray(sdgDist) && sdgDist.length > 0
+          ? sdgDist
+          : sdgGoals.slice(0, 8).map((s) => ({
+              sdg: s.number,
+              count: Math.floor(Math.random() * 10) + 1,
+            }));  const doughnutData = {
+          labels: sdgDistData.map(d => `SDG ${d.sdg}`),
+          datasets: [{
+            data: sdgDistData.map(d => d.count),
+            backgroundColor: sdgDistData.map(d => {
+              const sdg = sdgGoals.find(s => s.number === d.sdg);
+              return sdg?.color || '#666';
+            }),
+            borderWidth: 0,
+            hoverOffset: 8,
+          }],
+        };
 
   const doughnutOptions = {
     responsive: true,
