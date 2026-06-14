@@ -51,7 +51,7 @@ export const deleteProject = (id) => api.delete(`/projects/${id}`);
 
 // ─── AI ──────────────────────────────────────────────
 export const generateReport = (projectId) =>
-  api.post(`/ai/report/${projectId}`);
+  api.post(`/ai/generate-report/${projectId}`);
 export const estimateAttendance = (formData) =>
   api.post('/ai/estimate-attendance', formData, {
     headers: { 'Content-Type': 'multipart/form-data' },
@@ -59,7 +59,7 @@ export const estimateAttendance = (formData) =>
 export const generateSocialMedia = (projectId) =>
   api.post(`/ai/social-media/${projectId}`);
 export const getSDGMapping = (projectId) =>
-  api.get(`/ai/sdg-mapping/${projectId}`);
+  api.post(`/ai/sdg-mapping/${projectId}`);
 
 // ─── Analytics ───────────────────────────────────────
 export const getDashboardStats = () => api.get('/analytics/dashboard');

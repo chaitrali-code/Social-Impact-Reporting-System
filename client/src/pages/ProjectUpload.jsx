@@ -18,7 +18,7 @@ const steps = [
   { label: 'Review', icon: MdRateReview },
 ];
 
-const categories = ['Education', 'Health', 'Environment', 'Community', 'Technology', 'Arts', 'Sports', 'Other'];
+const categories = ['Education', 'Health', 'Environment', 'Community Development', 'Women Empowerment', 'Rural Development', 'Technology', 'Cultural', 'Sports', 'Other'];
 
 const ProjectUpload = () => {
   const navigate = useNavigate();
