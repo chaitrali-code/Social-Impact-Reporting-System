@@ -98,7 +98,11 @@ const ProjectDetail = () => {
       {photos.length > 0 && (
         <div className="photo-gallery">
           <img
-            src={photos[currentPhoto]?.startsWith('http') ? photos[currentPhoto] : `/api/${photos[currentPhoto]}`}
+            src={
+              photos[currentPhoto]?.startsWith('http')
+                ? photos[currentPhoto]
+                : `http://localhost:5000${photos[currentPhoto]}`
+            }
             alt={project.title}
             className="gallery-image"
           />

@@ -110,7 +110,15 @@ a {
   text-decoration: none;
   transition: color 0.2s;
 }
+select {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
 
+select option {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
 a:hover {
   color: var(--accent-purple);
 }

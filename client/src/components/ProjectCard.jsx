@@ -10,9 +10,18 @@ const ProjectCard = ({ project, delay = 0 }) => {
     navigate(`/projects/${project._id || project.id}`);
   };
 
-  const thumbnail = project.photos?.[0]
-    ? (project.photos[0].startsWith('http') ? project.photos[0] : `/api/${project.photos[0]}`)
-    : null;
+  // const thumbnail = project.photos?.[0]
+  //   ? (project.photos[0].startsWith('http') ? project.photos[0] : `/api/${project.photos[0]}`)
+  //   : null;
+
+const thumbnail = project.photos?.[0]
+  ? (
+      project.photos[0].startsWith('http')
+        ? project.photos[0]
+        : `http://localhost:5000${project.photos[0]}`
+        
+    )
+  : null;
 
   const sdgGoals = project.sdgGoals || project.sdgs || [];
   const formattedDate = project.date

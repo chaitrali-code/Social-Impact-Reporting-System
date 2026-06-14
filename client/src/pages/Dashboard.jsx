@@ -36,7 +36,7 @@ const Dashboard = () => {
           getSDGDistribution(),
           getTimeline(),
         ]);
-        if (statsRes.status === 'fulfilled') setStats(statsRes.value.data);
+        if (statsRes.status === 'fulfilled') setStats(statsRes.value.data.data);;
           if (sdgRes.status === 'fulfilled') {
             const responseData = sdgRes.value.data;
           
@@ -47,7 +47,7 @@ const Dashboard = () => {
             } else {
               setSdgDist([]);
             }
-          }        if (timeRes.status === 'fulfilled') setTimeline(timeRes.value.data);
+          }        if (timeRes.status === 'fulfilled') setTimeline(timeRes.value.data.data);
       } catch {
         // silently handle
       } finally {
@@ -79,23 +79,34 @@ const Dashboard = () => {
 
   // Bar chart — Projects by month
   const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-  const barData = {
-    labels: timeline?.labels || months.slice(0, 6),
-    datasets: [{
-      label: 'Projects',
-      data: timeline?.data || [5, 8, 12, 7, 15, 10],
-      backgroundColor: (ctx) => {
-        const gradient = ctx.chart.ctx.createLinearGradient(0, 0, 0, 300);
-        gradient.addColorStop(0, 'rgba(124, 58, 237, 0.8)');
-        gradient.addColorStop(1, 'rgba(59, 130, 246, 0.3)');
-        return gradient;
-      },
-      borderRadius: 8,
-      borderSkipped: false,
-      barThickness: 28,
-    }],
-  };
+ const timelineLabels =
+  timeline?.map(item => `${item.month}/${item.year}`) ||
+  months.slice(0, 6);
 
+const projectCounts =
+  timeline?.map(item => item.count) ||
+  [5, 8, 12, 7, 15, 10];
+
+const beneficiaryCounts =
+  timeline?.map(item => item.totalBeneficiaries) ||
+  [1200, 2400, 1800, 3200, 2800, 4100];
+
+  const barData = {
+  labels: timelineLabels,
+  datasets: [{
+    label: 'Projects',
+    data: projectCounts,
+    backgroundColor: (ctx) => {
+      const gradient = ctx.chart.ctx.createLinearGradient(0, 0, 0, 300);
+      gradient.addColorStop(0, 'rgba(124, 58, 237, 0.8)');
+      gradient.addColorStop(1, 'rgba(59, 130, 246, 0.3)');
+      return gradient;
+    },
+    borderRadius: 8,
+    borderSkipped: false,
+    barThickness: 28,
+  }],
+};
   const barOptions = {
     responsive: true,
     maintainAspectRatio: false,
@@ -171,11 +182,12 @@ const Dashboard = () => {
   };
 
   // Line chart — Impact over time
-  const lineData = {
-    labels: timeline?.labels || months.slice(0, 6),
-    datasets: [{
-      label: 'People Reached',
-      data: timeline?.impactData || [1200, 2400, 1800, 3200, 2800, 4100],
+
+const lineData = {
+  labels: timelineLabels,
+  datasets: [{
+    label: 'People Reached',
+    data: beneficiaryCounts,
       borderColor: '#14b8a6',
       backgroundColor: (ctx) => {
         const gradient = ctx.chart.ctx.createLinearGradient(0, 0, 0, 300);

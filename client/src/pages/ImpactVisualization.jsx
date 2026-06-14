@@ -30,10 +30,10 @@ const ImpactVisualization = () => {
           getTimeline(),
           getDashboardStats(),
         ]);
-        if (catRes.status === 'fulfilled') setCategoryData(catRes.value.data);
-        if (clubRes.status === 'fulfilled') setClubData(clubRes.value.data);
-        if (timeRes.status === 'fulfilled') setTimelineData(timeRes.value.data);
-        if (statsRes.status === 'fulfilled') setStats(statsRes.value.data);
+        if (catRes.status === 'fulfilled') setCategoryData(catRes.value.data.data);
+        if (clubRes.status === 'fulfilled') setClubData(clubRes.value.data.data);
+        if (timeRes.status === 'fulfilled') setTimelineData(timeRes.value.data.data);
+        if (statsRes.status === 'fulfilled') setStats(statsRes.value.data.data);
       } catch {
         // use demo data
       } finally {
@@ -44,14 +44,31 @@ const ImpactVisualization = () => {
   }, []);
 
   // Demo fallbacks
-  const catLabels = categoryData?.labels || ['Education', 'Health', 'Environment', 'Community', 'Technology', 'Arts'];
-  const catValues = categoryData?.data || [12, 8, 15, 6, 9, 4];
+  const catLabels =
+  categoryData?.map(item => item.category) ||
+  ['Education', 'Health', 'Environment'];
 
-  const clubLabels = clubData?.labels || ['Eco Warriors', 'Tech Club', 'Health Society', 'Social Club', 'Green Earth'];
-  const clubValues = clubData?.data || [15, 12, 9, 7, 5];
+  const catValues =
+  categoryData?.map(item => item.count) ||
+  [12, 8, 15];
 
-  const timeLabels = timelineData?.labels || ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
-  const timeValues = timelineData?.impactData || [1200, 2400, 1800, 3200, 2800, 4100];
+  const clubLabels =
+  clubData?.map(item => item.club) ||
+  ['Eco Warriors', 'Tech Club'];
+
+  const clubValues =
+  clubData?.map(item => item.projectCount) ||
+  [15, 12];
+
+  const timeLabels =
+  timelineData?.map(
+    item => `${item.month}/${item.year}`
+  ) || ['Jan', 'Feb'];
+
+  const timeValues =
+  timelineData?.map(
+    item => item.totalBeneficiaries
+  ) || [1200, 2400];
 
   const topProjects = timelineData?.topProjects || [
     { name: 'Beach Cleanup Drive', impact: 800 },
@@ -120,22 +137,22 @@ const ImpactVisualization = () => {
     }],
   };
 
-  const horizontalBarChart = {
-    labels: topProjects.map(p => p.name),
-    datasets: [{
-      label: 'Impact Score',
-      data: topProjects.map(p => p.impact),
-      backgroundColor: (ctx) => {
-        const gradient = ctx.chart.ctx.createLinearGradient(0, 0, 400, 0);
-        gradient.addColorStop(0, 'rgba(124, 58, 237, 0.8)');
-        gradient.addColorStop(1, 'rgba(59, 130, 246, 0.5)');
-        return gradient;
-      },
-      borderRadius: 6,
-      borderSkipped: false,
-      barThickness: 24,
-    }],
-  };
+  // const horizontalBarChart = {
+  //   labels: topProjects.map(p => p.name),
+  //   datasets: [{
+  //     label: 'Impact Score',
+  //     data: topProjects.map(p => p.impact),
+  //     backgroundColor: (ctx) => {
+  //       const gradient = ctx.chart.ctx.createLinearGradient(0, 0, 400, 0);
+  //       gradient.addColorStop(0, 'rgba(124, 58, 237, 0.8)');
+  //       gradient.addColorStop(1, 'rgba(59, 130, 246, 0.5)');
+  //       return gradient;
+  //     },
+  //     borderRadius: 6,
+  //     borderSkipped: false,
+  //     barThickness: 24,
+  //   }],
+  // };
 
   const chartOptions = (title) => ({
     responsive: true,
@@ -273,7 +290,7 @@ const ImpactVisualization = () => {
           </div>
         </div>
 
-        <div className="chart-card">
+        {/* <div className="chart-card">
           <div className="chart-card-header">
             <h3>Top 5 Most Impactful Projects</h3>
             <span className="chart-badge">Rankings</span>
@@ -281,7 +298,7 @@ const ImpactVisualization = () => {
           <div className="chart-container">
             <Bar data={horizontalBarChart} options={horizontalOptions} />
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
